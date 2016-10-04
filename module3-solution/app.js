@@ -49,7 +49,7 @@ function NarrowItDownController(MenuSearchService) {
     }
   }
 
-  list.removeItem = function (index) {
+  list.remove= function (index) {
     list.found.splice(index, 1);
   }
 }
