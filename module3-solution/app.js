@@ -1,14 +1,11 @@
 (function () {
 'use strict';
 
-
 angular.module('NarrowItDownApp', [])
-.controller('NarrowItDownController', NarrowItDownController )
+.controller('NarrowItDownController', NarrowItDownController)
 .service('MenuSearchService', MenuSearchService)
-.constant('ApiBasePath', "http://davids-restaurant.herokuapp.com")
-.directive('foundItems', FoundItemsDirective);
-
-
+.directive('foundItems', FoundItemsDirective)
+.constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
 
 function FoundItemsDirective () {
   var ddo = {
@@ -29,19 +26,18 @@ function FoundItemsDirectiveController () {
   var foundList = this;
 
   foundList.isEmpty = function () {
-    return  foundList.items.length == 0;
+    return foundList.items != undefined && foundList.items.length == 0;
   }
 }
 
-NarrowItDownController.$inject = ['MenuSearchService'];
+NarrowItDownController.$inject = ['MenuSearchService']
 function NarrowItDownController(MenuSearchService) {
-   var list=this;
+  var list = this;
 
-   list.narrowit() = function () {
-    if ( list.searchTerm.length == 0) {
+  list.narrow = function () {
+    if (list.searchTerm == undefined || (list.searchTerm != undefined && list.searchTerm.length == 0)) {
       list.found = [];
-    }
-    else {
+    } else {
       var promise = MenuSearchService.getMatchedMenuItems(list.searchTerm);
 
       promise.then(function (result) {
@@ -53,14 +49,10 @@ function NarrowItDownController(MenuSearchService) {
     }
   }
 
-   list.removeItem = function (index) {
-    list.found.splice(index, 1);
+  list.removeItem = function (itemIndex) {
+    list.found.splice(itemIndex, 1);
   }
-
-
-
 }
-
 
 MenuSearchService.$inject = ['$http', 'ApiBasePath']
 function MenuSearchService($http, ApiBasePath) {
@@ -74,10 +66,10 @@ function MenuSearchService($http, ApiBasePath) {
     .then(function (response) {
       var menuItems = response.data.menu_items;
       var foundItems = [];
-      var i;
-      for (i in menuItems){
-      	if (menuItems[i].description.includes(searchTerm)) {
-      	  foundItems.push(menuItems[i]);
+      var index;
+      for (index in menuItems){
+      	if (menuItems[index].description.includes(searchTerm)) {
+      	  foundItems.push(menuItems[index]);
       	}
       }
 
@@ -88,7 +80,5 @@ function MenuSearchService($http, ApiBasePath) {
     });
   };
 }
-
-
 
 })();
