@@ -34,7 +34,7 @@ NarrowItDownController.$inject = ['MenuSearchService']
 function NarrowItDownController(MenuSearchService) {
   var list = this;
 
-  list.narrow = function () {
+  list.narrowit = function () {
     if (list.searchTerm == undefined || (list.searchTerm != undefined && list.searchTerm.length == 0)) {
       list.found = [];
     } else {
