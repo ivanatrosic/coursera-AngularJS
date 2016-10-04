@@ -26,7 +26,7 @@ function FoundItemsDirectiveController () {
   var foundList = this;
 
   foundList.isEmpty = function () {
-    return foundList.items != undefined && foundList.items.length == 0;
+    return  foundList.items.length == 0;
   }
 }
 
@@ -35,7 +35,7 @@ function NarrowItDownController(MenuSearchService) {
   var list = this;
 
   list.narrowit = function () {
-    if (list.searchTerm == undefined || (list.searchTerm != undefined && list.searchTerm.length == 0)) {
+    if ( list.searchTerm.length == 0) {
       list.found = [];
     } else {
       var promise = MenuSearchService.getMatchedMenuItems(list.searchTerm);
