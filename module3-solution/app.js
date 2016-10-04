@@ -66,10 +66,10 @@ function MenuSearchService($http, ApiBasePath) {
     .then(function (response) {
       var menuItems = response.data.menu_items;
       var foundItems = [];
-      var index;
-      for (index in menuItems){
-      	if (menuItems[index].description.includes(searchTerm)) {
-      	  foundItems.push(menuItems[index]);
+      var i;
+      for (i in menuItems){
+      	if (menuItems[i].description.includes(searchTerm)) {
+      	  foundItems.push(menuItems[i]);
       	}
       }
 
