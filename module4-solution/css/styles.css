@@ -1,0 +1,48 @@
+body {
+  font-size: 1.2em;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  display: none;
+}
+
+.loading-icon {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+}
+
+li[ui-sref]:hover {
+  display: inline-block;
+  cursor: pointer;
+  border: solid black 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.category-name {
+  text-decoration: underline;
+}
+.food-list ul {
+  list-style: none;
+  border-left: 8px solid yellowgreen;
+  border-right: 8px solid yellowgreen;
+  border-radius: 15px;
+  border-top: 1px solid yellowgreen;
+  border-bottom: 1px solid yellowgreen;
+  margin: 10px;
+  padding: 10px;
+  width: auto;
+  display: inline-block;
+}
+.food-list ul:nth-child(even) {
+  border-color: red;
+}
+.food-list ul li span {
+  font-weight: bold;
+  max-width: 450px;
+  display: inline-block;
+  vertical-align: text-top;
+}
