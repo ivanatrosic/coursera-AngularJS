@@ -16,13 +16,13 @@
     // Home page
     .state('home', {
       url: '/',
-      templateUrl: 'src/MenuApp/templates/home.template.html'
+      templateUrl: 'src/templates/home.template.html'
     })
 
     // Categories list page
     .state('categories', {
       url: '/categories',
-      templateUrl: 'src/MenuApp/templates/categories.template.html',
+      templateUrl: 'src/templates/categories.template.html',
       controller: 'CategoriesController as categoriesList',
       resolve: {
         categories: ['MenuDataService', function (MenuDataService) {
@@ -34,7 +34,7 @@
     // Category's Items
     .state('categories.items', {
       url: '/category/{short_name}',
-      templateUrl: 'src/MenuApp/templates/items.template.html',
+      templateUrl: 'src/templates/items.template.html',
       controller: 'CategoryItemsController as categoryItems',
       params: {
         short_name: null,
